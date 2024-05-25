@@ -22,3 +22,15 @@ class BubbleTea:
     
   def add_topping(self, topping_name, drink_name):
     topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
+
+    if topping_name in topping_list:
+      extra = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
+      print(extra)
+      if extra == "Yes":
+        print("You have added extra", topping_name, "to", drink_name)
+      elif extra == "No":
+        print(topping_name, "will not be added as an extra topping to", drink_name)
+    if topping_name not in topping_list:
+      print(topping_name , "is not available as a topping for", drink_name)
+
+      # need to work on implementing error detection code such as if the input is not equal to either options 
