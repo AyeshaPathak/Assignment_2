@@ -20,3 +20,5 @@ class BubbleTea:
   def set_topping_name(self, topping_name): 
     self.topping_name = topping_name 
     
+  def add_topping(self, topping_name, drink_name):
+    topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
