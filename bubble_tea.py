@@ -8,3 +8,15 @@ class BubbleTea:
     self.__topping_name = topping_name
     self.__price = price 
 
+  def get_drink_name(self):
+    return self.__drink_name
+    
+  def set_drink_name(self, drink_name):
+    self.drink_name = drink_name    
+    
+  def get_topping_name(self):
+    return self.__topping_name 
+    
+  def set_topping_name(self, topping_name): 
+    self.topping_name = topping_name 
+    
