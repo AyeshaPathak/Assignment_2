@@ -25,13 +25,14 @@ class BubbleTea:
 
     if topping_name in topping_list:
       extra = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
-      while extra != 'Yes' or extra == 'No':
+      while extra not in ("Yes", "No"):
         extra = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
-        if extra == "Yes":
-          print("You have added extra", topping_name, "to", drink_name)
-        elif extra == "No":
-          print(topping_name, "will not be added as an extra topping to", drink_name)
-
+      if extra == "Yes":
+        print("You have added extra", topping_name, "to", drink_name)
+      elif extra == "No":
+        print(topping_name, "will not be added as an extra topping to", drink_name)
+        
+# problem with the no portion 
 
     if topping_name not in topping_list:
       print(topping_name , "is not available as a topping for", drink_name)
