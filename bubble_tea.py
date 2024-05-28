@@ -24,23 +24,15 @@ class BubbleTea:
     topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
     if topping_name in topping_list:
-      extra = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
-      while extra not in ("Yes", "No"):
-        extra = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
-      if extra == "Yes":
+      extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
+      while extra_topping not in ("Yes", "No"):
+        extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
+      if extra_topping == "Yes":
         print("You have added extra", topping_name, "to", drink_name)
-      elif extra == "No":
+      elif extra_topping == "No":
         print(topping_name, "will not be added as an extra topping to", drink_name)
-        
-# problem with the no portion 
-
-    if topping_name not in topping_list:
+    elif topping_name not in topping_list:
       print(topping_name , "is not available as a topping for", drink_name)
-
-
-
-
-
 
 
 
