@@ -1,13 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABC, remove_topping_method, add_topping_method
 
 
-class TeaType:
-  def __init__(self):
-    # will hold the various types of teas someone can order (4 different dictionaries holding drink name and ingredients)
-    pass 
-
-
-class BubbleTea(ABC, TeaType): # then utilise the dictionaries in the methods in this class 
+class BubbleTea(ABC):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     self.__drink_name = drink_name
     self.__size = size 
@@ -28,7 +22,26 @@ class BubbleTea(ABC, TeaType): # then utilise the dictionaries in the methods in
     
   def set_topping_name(self, topping_name): 
     self.topping_name = topping_name 
+
+
+  @remove_topping_method
+  def remove_topping(self, topping_name, drink_name):
+    pass
+
+  @add_topping_method 
+  def add_topping(self, topping_name, drink_name):
+    pass
+
+
     
+
+
+class MilkFruit(BubbleTea):
+  def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
+    super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]} 
+    fruit_menu_dict = {"Mango and Passion Tea": ["Frozen Mango", "Passion Fruit", "Mango Popping Pearls"], "Strawberry Ice Blend": ["Frozen Strawberries", "Ice Cream", "Strawberry Infused Tea", "Strawberry Popping Pearls"], "Lemon and Blueberry Frenzy": ["Lemon Citrus Tea", "Blueberry Tea", "Lemon Extract"]}
+
   def add_topping(self, topping_name, drink_name):
     topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
     if topping_name in topping_list:
@@ -42,29 +55,27 @@ class BubbleTea(ABC, TeaType): # then utilise the dictionaries in the methods in
     elif topping_name not in topping_list:
       print(topping_name , "is not available as a topping for", drink_name)
 
-  @abstractmethod
-  def remove_topping(self, topping_name, drink_name):
-    pass
-
-    
-
-
-class MilkFruit(BubbleTea):
-  def __init__(self):
-    pass
 
 
 class SparklingHot(BubbleTea):
-  def __init__(self):
-    pass
+  def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
+    super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    sparkling_menu_dict = {"Ginger Rose Tea": ["Ginger Extract", "Rose Tea"], "Watermelon Tea": ["Watermelon Tea", "Lemon Citrus Extract", "Herbal Jelly"]}
+    hot_menu_dict = {"Ruby Grapefruit and Honey": ["Honey", "Grapefruit", "Honey", "Black Tea"], "Earl Grey Black Tea": ["Earl Grey Tea", "Black Tea"]}
 
 
 class Frozen(BubbleTea):
-  def __init__(self):
-    pass
+  def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
+    super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    frozen_menu_dict = {"Lychee Frozen": ["Frozen Lychee", "Mixed Jellies"], "Mango Frozen": ["Frozen mango"]}
 
 
-
+class Store(MilkFruit, SparklingHot, Frozen, BubbleTea):
+  def __inti__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
+    BubbleTea.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    MilkFruit.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    SparklingHot.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    Frozen.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
 
 
 bubble_tea = BubbleTea("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
