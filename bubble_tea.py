@@ -1,8 +1,9 @@
-from abc import ABC, remove_topping_method, add_topping_method
+from abc import ABC, abstractmethod
+
 
 
 class BubbleTea(ABC):
-  def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
+  def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price, add_topping):
     self.__drink_name = drink_name
     self.__size = size 
     self.__ice_level = ice_level
@@ -10,6 +11,7 @@ class BubbleTea(ABC):
     self.__tea_type = tea_type
     self.__topping_name = topping_name
     self.__price = price 
+    self.__add_topping = None
 
   def get_drink_name(self):
     return self.__drink_name
@@ -24,26 +26,22 @@ class BubbleTea(ABC):
     self.topping_name = topping_name 
 
 
-  @remove_topping_method
-  def remove_topping(self, topping_name, drink_name):
-    pass
-
-  @add_topping_method 
+  @abstractmethod
   def add_topping(self, topping_name, drink_name):
     pass
 
 
+  # add remove_topping method later
     
 
 
 class MilkFruit(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
-    super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
     milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]} 
     fruit_menu_dict = {"Mango and Passion Tea": ["Frozen Mango", "Passion Fruit", "Mango Popping Pearls"], "Strawberry Ice Blend": ["Frozen Strawberries", "Ice Cream", "Strawberry Infused Tea", "Strawberry Popping Pearls"], "Lemon and Blueberry Frenzy": ["Lemon Citrus Tea", "Blueberry Tea", "Lemon Extract"]}
-
-  def add_topping(self, topping_name, drink_name):
-    topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
+    # work on implementing dictionary into this 
+  def add_topping(self, topping_name, drink_name): # implement the fact that milk tea and be fruit tea and vice versa 
+    self.add_topping = topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
     if topping_name in topping_list:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
       while extra_topping not in ("Yes", "No"):
@@ -54,6 +52,7 @@ class MilkFruit(BubbleTea):
         print(topping_name, "will not be added as an extra topping to", drink_name)
     elif topping_name not in topping_list:
       print(topping_name , "is not available as a topping for", drink_name)
+      print(self.add_topping)
 
 
 
@@ -78,5 +77,5 @@ class Store(MilkFruit, SparklingHot, Frozen, BubbleTea):
     Frozen.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
 
 
-bubble_tea = BubbleTea("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+bubble_tea = MilkFruit("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
 bubble_tea.add_topping("Pearls", "Green Tea and Matcha")
