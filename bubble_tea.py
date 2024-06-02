@@ -1,6 +1,8 @@
-# after completed - divide classes into seperate modules 
-# add a header to each module 
-# add string method to each class 
+  # add remove_topping method later
+  # then string methods in all polymorphic classes 
+  # then work on pricing method in store multiple inheritance class 
+  # then testing stuff 
+  # then divide into deperate modules with headers for each module 
 
 
 from abc import ABC, abstractmethod
@@ -33,8 +35,9 @@ class BubbleTea(ABC):
   def add_topping(self, topping_name, drink_name):
     pass
 
-
-  # add remove_topping method later
+  @abstractmethod
+  def remove_topping(self, topping_name, drink_name):
+    pass
     
 
 
@@ -42,13 +45,13 @@ class MilkTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
   milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]} 
+  topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
-    topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
     if drink_name in MilkTea.milk_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
-      if topping_name in (MilkTea.milk_menu_dict[drink_name]) and topping_name in topping_list:
+      if topping_name in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
         while extra_topping not in ("Yes", "No"):
           extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
         if extra_topping == "Yes":
@@ -56,8 +59,27 @@ class MilkTea(BubbleTea):
           print("Your final order is:", drink_name,":", (MilkTea.milk_menu_dict[drink_name]), "+",topping_name)
         elif extra_topping == "No":
           print(topping_name, "will not be added as an extra topping to", drink_name)
-      elif topping_name not in topping_list:
+      elif topping_name not in MilkTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
+
+
+  def remove_topping(self, topping_name, drink_name):
+    if drink_name in MilkTea.milk_menu_dict:
+      print("Your drink order contains the following toppings:", MilkTea.milk_menu_dict[drink_name])
+      print(" ")
+      if topping_name in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
+        minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
+        while minus_topping not in ("Yes", "No"):
+          minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
+        if minus_topping == "Yes":
+          print("You have removed", topping_name, "from", drink_name)
+          print("Your final order is:", drink_name, ":", MilkTea.milk_menu_dict[drink_name], "-",topping_name)
+        elif minus_topping == "No":
+          print(topping_name, "will not be removed from", drink_name)
+      elif topping_name not in MilkTea.topping_list[drink_name]:
+        print(topping_name, "is not on", drink_name)
+          
+
 
 
 class FruitTea(BubbleTea):
@@ -162,9 +184,10 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
     HotTea.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
     FrozenTea.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
 
-
+    # final pricing method will be done here 
 
 
 
 bubble_tea = MilkTea("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
-bubble_tea.add_topping("Pearls", "Classic Milk Tea")
+# bubble_tea.add_topping("Pearls", "Classic Milk Tea")
+bubble_tea.remove_topping("Cookie Crumb", "Cookie Crumble")
