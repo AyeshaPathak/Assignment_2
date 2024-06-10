@@ -5,8 +5,10 @@
   # then divide into deperate modules with headers for each module 
 
 
-
 from abc import ABC, abstractmethod
+
+
+topping_price_dict = {"Custard" : "$1.00", "Mousse" : "$2.40", "Pearls" : "$1.20", "Cookie Crumb" :"$0.75", "Mixed Jellies" : "$0.35", "Herbal Jelly" : "$0.45", "Coconut Jelly" : "$0.50", "Aloe Vera" : "$0.70", "Mango Popping Pearls" : "$0.40", "Strawberry Popping Pearls" : "$0.40", "Apple Popping Pearls" : "$0.40"}
 
 
 class BubbleTea(ABC):
@@ -39,17 +41,20 @@ class BubbleTea(ABC):
   @abstractmethod
   def remove_topping(self, topping_name, drink_name):
     pass
-    
+
+  @abstractmethod
+  def __str__(self):
+    pass
 
 
 class MilkTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
-  milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]} 
+  milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]}
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
-  def add_topping(self, topping_name, drink_name): 
 
+  def add_topping(self, topping_name, drink_name): 
     if drink_name in MilkTea.milk_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
       if topping_name in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
@@ -80,6 +85,9 @@ class MilkTea(BubbleTea):
       elif topping_name not in MilkTea.topping_list[drink_name]:
         print(topping_name, "is not on", drink_name)
           
+      
+  def __str__(self):
+    return f"{self.__topping_name} is removed from or added to {self.__drink_name} after filtering through {MilkTea.milk_menu_dict} and {MilkTea.topping_list}"
 
 
 
@@ -90,7 +98,6 @@ class FruitTea(BubbleTea):
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
-
     if drink_name in FruitTea.fruit_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
       if topping_name in (FruitTea.fruit_menu_dict[drink_name]) and topping_name in FruitTea.topping_list:
@@ -121,6 +128,9 @@ class FruitTea(BubbleTea):
       elif topping_name not in FruitTea.topping_list[drink_name]:
         print(topping_name, "is not on", drink_name)
 
+  def __str__(self):
+    return f"{self.__topping_name} is removed from or added to {self.__drink_name} after filtering through {FruitTea.fruit_menu_dict} and {FruitTea.topping_list}"
+
 
 
 class SparklingTea(BubbleTea):
@@ -130,7 +140,6 @@ class SparklingTea(BubbleTea):
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
-
     if drink_name in SparklingTea.sparkling_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
       if topping_name in (SparklingTea.sparkling_menu_dict[drink_name]) and topping_name in SparklingTea.topping_list:
@@ -162,6 +171,10 @@ class SparklingTea(BubbleTea):
         print(topping_name, "is not on", drink_name)
 
 
+  def __str__(self):
+    return f"{self.__topping_name} is removed from or added to {self.__drink_name} after filtering through {SparklingTea.sparkling_menu_dict} and {SparklingTea.topping_list}"
+
+
 
 class HotTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
@@ -170,7 +183,6 @@ class HotTea(BubbleTea):
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   
   def add_topping(self, topping_name, drink_name): 
-
     if drink_name in HotTea.hot_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
       if topping_name in (HotTea.hot_menu_dict[drink_name]) and topping_name in HotTea.topping_list:
@@ -202,6 +214,11 @@ class HotTea(BubbleTea):
         print(topping_name, "is not on", drink_name)
 
 
+  def __str__(self):
+    return f"{self.__topping_name} is removed from or added to {self.__drink_name} after filtering through {HotTea.hot_menu_dict} and {HotTea.topping_list}"
+
+
+
 
 class FrozenTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
@@ -210,7 +227,6 @@ class FrozenTea(BubbleTea):
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
-
     if drink_name in FrozenTea.frozen_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
       if topping_name in (FrozenTea.frozen_menu_dict[drink_name]) and topping_name in FrozenTea.topping_list:
@@ -242,6 +258,8 @@ class FrozenTea(BubbleTea):
         print(topping_name, "is not on", drink_name)
 
 
+  def __str__(self):
+    return f"{self.__topping_name} is removed from or added to {self.__drink_name} after filtering through {FrozenTea.frozen_menu_dict} and {FrozenTea.topping_list}"
 
 
 class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
