@@ -7,8 +7,16 @@
 
 from abc import ABC, abstractmethod
 
+class Topping:
+  def __init__(self):
+    self.__topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
+    self.__topping_price_dict = {"Custard" : "$1.00", "Mousse" : "$2.40", "Pearls" : "$1.20", "Cookie Crumb" :"$0.75", "Mixed Jellies" : "$0.35", "Herbal Jelly" : "$0.45", "Coconut Jelly" : "$0.50", "Aloe Vera" : "$0.70", "Mango Popping Pearls" : "$0.40", "Strawberry Popping Pearls" : "$0.40", "Apple Popping Pearls" : "$0.40"}
 
-topping_price_dict = {"Custard" : "$1.00", "Mousse" : "$2.40", "Pearls" : "$1.20", "Cookie Crumb" :"$0.75", "Mixed Jellies" : "$0.35", "Herbal Jelly" : "$0.45", "Coconut Jelly" : "$0.50", "Aloe Vera" : "$0.70", "Mango Popping Pearls" : "$0.40", "Strawberry Popping Pearls" : "$0.40", "Apple Popping Pearls" : "$0.40"}
+  def get_topping_list(self):
+    return self.__topping_list 
+  
+  def get_topping_dict(self):
+    return self.__topping_price_dict
 
 
 class BubbleTea(ABC):
@@ -53,7 +61,6 @@ class MilkTea(BubbleTea):
   milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]}
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
-
   def add_topping(self, topping_name, drink_name): 
     if drink_name in MilkTea.milk_menu_dict:
       extra_topping = input("This topping is already on this drink. Would you like to add extra? [Yes/No]")
@@ -72,7 +79,6 @@ class MilkTea(BubbleTea):
   def remove_topping(self, topping_name, drink_name):
     if drink_name in MilkTea.milk_menu_dict:
       print("Your drink order contains the following toppings:", MilkTea.milk_menu_dict[drink_name])
-      print(" ")
       if topping_name in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
@@ -115,7 +121,6 @@ class FruitTea(BubbleTea):
   def remove_topping(self, topping_name, drink_name):
     if drink_name in FruitTea.fruit_menu_dict:
       print("Your drink order contains the following toppings:", FruitTea.fruit_menu_dict[drink_name])
-      print(" ")
       if topping_name in (FruitTea.fruit_menu_dict[drink_name]) and topping_name in FruitTea.topping_list:
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
@@ -157,7 +162,6 @@ class SparklingTea(BubbleTea):
   def remove_topping(self, topping_name, drink_name):
     if drink_name in SparklingTea.sparkling_menu_dict:
       print("Your drink order contains the following toppings:", SparklingTea.sparkling_menu_dict[drink_name])
-      print(" ")
       if topping_name in (SparklingTea.sparkling_menu_dict[drink_name]) and topping_name in SparklingTea.topping_list:
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
@@ -200,7 +204,6 @@ class HotTea(BubbleTea):
   def remove_topping(self, topping_name, drink_name):
     if drink_name in HotTea.hot_menu_dict:
       print("Your drink order contains the following toppings:", HotTea.hot_menu_dict[drink_name])
-      print(" ")
       if topping_name in (HotTea.hot_menu_dict[drink_name]) and topping_name in HotTea.topping_list:
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
@@ -244,7 +247,6 @@ class FrozenTea(BubbleTea):
   def remove_topping(self, topping_name, drink_name):
     if drink_name in FrozenTea.frozen_menu_dict:
       print("Your drink order contains the following toppings:", FrozenTea.frozen_menu_dict[drink_name])
-      print(" ")
       if topping_name in (FrozenTea.frozen_menu_dict[drink_name]) and topping_name in FrozenTea.topping_list:
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
