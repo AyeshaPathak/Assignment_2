@@ -7,16 +7,6 @@
 
 from abc import ABC, abstractmethod
 
-class Topping:
-  def __init__(self):
-    self.__topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
-    self.__topping_price_dict = {"Custard" : "$1.00", "Mousse" : "$2.40", "Pearls" : "$1.20", "Cookie Crumb" :"$0.75", "Mixed Jellies" : "$0.35", "Herbal Jelly" : "$0.45", "Coconut Jelly" : "$0.50", "Aloe Vera" : "$0.70", "Mango Popping Pearls" : "$0.40", "Strawberry Popping Pearls" : "$0.40", "Apple Popping Pearls" : "$0.40"}
-
-  def get_topping_list(self):
-    return self.__topping_list 
-  
-  def get_topping_dict(self):
-    return self.__topping_price_dict
 
 
 class BubbleTea(ABC):
@@ -59,6 +49,7 @@ class MilkTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
   milk_menu_dict = {"Green Tea Strawberry Matcha Latte": ["Matcha", "Milk", "Green Tea", "Ice", "Frozen Starwberries", "Strawberry Infused Tea"], "Classic Milk Tea": ["Sweetened Black Tea", "Milk", "Pearls"], "Cookie Crumble": ["Blended Oreo", "Milk", "Whipped Cream", "Cookie Crumb"], "Choco Blast": ["Chocolate Sauce", "Milk", "Shredded Chocolate"]}
+  milk_tea_name = ["Green Tea Strawberry Matcha Latte", "Classic Milk Tea", "Cookie Cumble", "Choco Blast"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
@@ -101,6 +92,7 @@ class FruitTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
   fruit_menu_dict = {"Mango and Passion Tea": ["Frozen Mango", "Passion Fruit", "Mango Popping Pearls"], "Strawberry Ice Blend": ["Frozen Strawberries", "Ice Cream", "Strawberry Infused Tea", "Strawberry Popping Pearls"], "Lemon and Blueberry Frenzy": ["Lemon Citrus Tea", "Blueberry Tea", "Lemon Extract"]}
+  fruit_tea_name = ["Mango and Passion Tea", "Strawberry Ice Blend", "Lemon and Blueberry Frenzy"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
@@ -142,6 +134,7 @@ class SparklingTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
   sparkling_menu_dict = {"Ginger Rose Tea": ["Ginger Extract", "Rose Tea"], "Watermelon Tea": ["Watermelon Tea", "Lemon Citrus Extract", "Herbal Jelly"]}
+  sprakling_tea_name = ["Ginger Rose Tea", "Watermelon Tea"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
@@ -184,6 +177,7 @@ class HotTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
   hot_menu_dict = {"Ruby Grapefruit and Honey": ["Honey", "Grapefruit", "Honey", "Black Tea"], "Earl Grey Black Tea": ["Earl Grey Tea", "Black Tea"]}
+  hot_tea_name = ["Ruby Grapefruit and Honey", "Earl Grey Black Tea"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   
   def add_topping(self, topping_name, drink_name): 
@@ -227,6 +221,7 @@ class FrozenTea(BubbleTea):
   def __init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price):
     super().__init__(drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
   frozen_menu_dict = {"Lychee Frozen": ["Frozen Lychee", "Mixed Jellies"], "Mango Frozen": ["Frozen mango"]}
+  frozen_tea_name = ["Lychee Frozen", "Mango Frozen"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
 
   def add_topping(self, topping_name, drink_name): 
@@ -272,14 +267,46 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
     SparklingTea.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
     HotTea.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
     FrozenTea.__init__(self, drink_name, size, ice_level, sugar_level, tea_type, topping_name, price)
+    topping_price_dict = {"Custard" : "$1.00", "Mousse" : "$2.40", "Pearls" : "$1.20", "Cookie Crumb" :"$0.75", "Mixed Jellies" : "$0.35", "Herbal Jelly" : "$0.45", "Coconut Jelly" : "$0.50", "Aloe Vera" : "$0.70", "Mango Popping Pearls" : "$0.40", "Strawberry Popping Pearls" : "$0.40", "Apple Popping Pearls" : "$0.40"}
+    store_earning = []
+    order_history = []
 
   def order_drink(self):
-    pass
+    print("Welcome to The Bubble Tea Store")
+    print("-------------------------------")
+    drink_type_select = input("What would you like to order? [Milky, Fruity, Sparkling, Hot, Frozen]")
+    print("Drink menu for", drink_type_select, "drinks:")
+    if drink_type_select in ("Milky", "Fruity"):
+      print(MilkTea.milk_tea_name)
+      print(FruitTea.fruit_tea_name)
+      print(SparklingTea.sprakling_tea_name)
+      print(HotTea.hot_tea_name)
+      print(FrozenTea.frozen_tea_name)
+    elif drink_type_select == "Sparkling":
+      print(SparklingTea.sprakling_tea_name)
+      print(FruitTea.fruit_tea_name)
+    elif drink_type_select == "Hot":
+      print(HotTea.hot_tea_name)
+      print(MilkTea.milk_tea_name)
+      print(FruitTea.fruit_tea_name)
+    elif drink_type_select == "Frozen":
+      print(FrozenTea.frozen_tea_name)
+      print(MilkTea.milk_tea_name)
+      print(FruitTea.fruit_tea_name)
+        
 
-    # use all outputs of each class' methods to create a final ordering and pricing procedure method in this class
+  # choosing what type of drink to order - depending on choice show a list of drinks 
+  # display the topping's on the drink 
+  # ask if customer wants to remove or add a topping 
+  # if either then show either method then show final drink order 
+  # ask if another drink needs to be ordered (if yes then it loops, if not then it continues)
+  # if not then continue to display final drink order 
+  # show total and display thank you message 
 
 
+#bubble_tea = MilkTea("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+#bubble_tea.add_topping("Pearls", "Classic Milk Tea")
+#bubble_tea.remove_topping("Cookie Crumb", "Cookie Crumble")
 
-bubble_tea = MilkTea("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
-bubble_tea.add_topping("Pearls", "Classic Milk Tea")
-bubble_tea.remove_topping("Cookie Crumb", "Cookie Crumble")
+store = Store("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+store.order_drink()
