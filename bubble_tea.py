@@ -271,42 +271,119 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
     store_earning = []
     order_history = []
 
-  def order_drink(self):
+  def order_drink(self, drink_name):
     print("Welcome to The Bubble Tea Store")
     print("-------------------------------")
     drink_type_select = input("What would you like to order? [Milky, Fruity, Sparkling, Hot, Frozen]")
-    print("Drink menu for", drink_type_select, "drinks:")
-    if drink_type_select in ("Milky", "Fruity"):
-      print(MilkTea.milk_tea_name)
-      print(FruitTea.fruit_tea_name)
-      print(SparklingTea.sprakling_tea_name)
-      print(HotTea.hot_tea_name)
-      print(FrozenTea.frozen_tea_name)
-    elif drink_type_select == "Sparkling":
-      print(SparklingTea.sprakling_tea_name)
-      print(FruitTea.fruit_tea_name)
-    elif drink_type_select == "Hot":
-      print(HotTea.hot_tea_name)
-      print(MilkTea.milk_tea_name)
-      print(FruitTea.fruit_tea_name)
-    elif drink_type_select == "Frozen":
-      print(FrozenTea.frozen_tea_name)
-      print(MilkTea.milk_tea_name)
-      print(FruitTea.fruit_tea_name)
-        
+    if drink_type_select in ("Fruity"):
+        print(FruitTea.fruit_tea_name)
+        print(MilkTea.milk_tea_name)
+        print(SparklingTea.sprakling_tea_name)
+        print(HotTea.hot_tea_name)
+        print(FrozenTea.frozen_tea_name)
+        if (drink_name in FruitTea.fruit_tea_name) or (drink_name in MilkTea.milk_tea_name) or (drink_name in SparklingTea.sprakling_tea_name) or (drink_name in HotTea.hot_tea_name) or (drink_name in FrozenTea.frozen_tea_name):
+          print(" ")
+          print("You have chosen", drink_name)
+          if drink_name in FruitTea.fruit_menu_dict:
+            print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+          elif drink_name in MilkTea.milk_menu_dict:
+            print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+          elif drink_name in SparklingTea.sparkling_menu_dict:
+            print("This drink contains the following toppings:", (SparklingTea.sparkling_menu_dict[drink_name]))
+          elif drink_name in HotTea.hot_menu_dict:
+            print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
+          elif drink_name in FrozenTea.frozen_menu_dict:
+            print("This drink contains the following toppings:", (FrozenTea.frozen_menu_dict[drink_name]))
+        else:
+          print("This drink is not available on our menu for this selection")
 
-  # choosing what type of drink to order - depending on choice show a list of drinks 
-  # display the topping's on the drink 
+
+    elif drink_type_select in ("Milky", "Fruity", "Sparkling", "Hot", "Frozen"):
+      print("Drink menu for", drink_type_select, "drinks:")
+      if drink_type_select in ("Milky"):
+        print(MilkTea.milk_tea_name)
+        print(FruitTea.fruit_tea_name)
+        print(HotTea.hot_tea_name)
+        print(FrozenTea.frozen_tea_name)
+        if (drink_name in MilkTea.milk_tea_name) or (drink_name in FruitTea.fruit_tea_name) or (drink_name in HotTea.hot_tea_name) or (drink_name in FrozenTea.frozen_tea_name):
+          print(" ")
+          print("You have chosen", drink_name)
+          if drink_name in FruitTea.fruit_menu_dict:
+            print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+          elif drink_name in MilkTea.milk_menu_dict:
+            print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+          elif drink_name in HotTea.hot_menu_dict:
+            print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
+          elif drink_name in FrozenTea.frozen_menu_dict:
+            print("This drink contains the following toppings:", (FrozenTea.frozen_menu_dict[drink_name]))
+        else:
+          print("This drink is not available on our menu for this selection")
+
+
+      elif drink_type_select == "Sparkling":
+        print(SparklingTea.sprakling_tea_name)
+        print(FruitTea.fruit_tea_name)
+        if (drink_name in SparklingTea.sprakling_tea_name) or (drink_name in FruitTea.fruit_tea_name):
+          print(" ")
+          print("You have chosen", drink_name)
+          if drink_name in FruitTea.fruit_menu_dict:
+            print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+          elif drink_name in SparklingTea.sparkling_menu_dict:
+            print("This drink contains the following toppings:", (SparklingTea.sparkling_menu_dict[drink_name]))
+        else:
+          print("This drink is not available on our menu for this selection")
+
+
+      elif drink_type_select == "Hot":
+        print(HotTea.hot_tea_name)
+        print(MilkTea.milk_tea_name)
+        print(FruitTea.fruit_tea_name)
+        if (drink_name in MilkTea.milk_tea_name) or (drink_name in FruitTea.fruit_tea_name) or (drink_name in HotTea.hot_tea_name):
+          print(" ")
+          print("You have chosen", drink_name)
+          if drink_name in FruitTea.fruit_menu_dict:
+            print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+          elif drink_name in MilkTea.milk_menu_dict:
+            print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+          elif drink_name in HotTea.hot_menu_dict:
+            print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
+        else:
+          print("This drink is not available on our menu for this selection")
+
+
+      elif drink_type_select == "Frozen":
+        print(FrozenTea.frozen_tea_name)
+        print(MilkTea.milk_tea_name)
+        print(FruitTea.fruit_tea_name)
+        if (drink_name in FrozenTea.frozen_tea_name) or (drink_name in MilkTea.milk_tea_name) or (drink_name in FruitTea.fruit_tea_name):
+          print(" ")
+          print("You have chosen", drink_name)
+          if drink_name in FruitTea.fruit_menu_dict:
+            print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+          elif drink_name in MilkTea.milk_menu_dict:
+            print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+          elif drink_name in FrozenTea.frozen_menu_dict:
+            print("This drink contains the following toppings:", (FrozenTea.frozen_menu_dict[drink_name]))
+        else:
+          print("This drink is not available on our menu for this selection")
+
+
+
+  # choosing what type of drink to order - depending on choice show a list of drinks (done)
+  # display the topping's on the drink (done)
   # ask if customer wants to remove or add a topping 
   # if either then show either method then show final drink order 
   # ask if another drink needs to be ordered (if yes then it loops, if not then it continues)
+  # ask addtional things from attributes 
   # if not then continue to display final drink order 
   # show total and display thank you message 
 
 
-#bubble_tea = MilkTea("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+#bubble_tea = MilkTea("Green Tea Strawberry Matcha Latte", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
 #bubble_tea.add_topping("Pearls", "Classic Milk Tea")
 #bubble_tea.remove_topping("Cookie Crumb", "Cookie Crumble")
 
-store = Store("Green Tea and Matcha", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
-store.order_drink()
+store = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+store.order_drink("Classic Milk Tea")
+
+# 9 days worth of commits done (one more remaining to meet mark)
