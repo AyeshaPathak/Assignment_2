@@ -62,7 +62,7 @@ class MilkTea(BubbleTea):
             print("Your final order is:", drink_name,":", (MilkTea.milk_menu_dict[drink_name]), "+",topping_name)
           elif extra_topping == "No":
             print(topping_name, "will not be added as an extra topping to", drink_name)
-      if topping_name not in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list: # new area of code added (fix all others)
+      if topping_name not in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
         print("You have added", topping_name, "to", drink_name)
         print("Your final order is:", drink_name,":", (MilkTea.milk_menu_dict[drink_name]), "+",topping_name)
     elif topping_name not in MilkTea.topping_list:
@@ -71,8 +71,8 @@ class MilkTea(BubbleTea):
 
   def remove_topping(self, topping_name, drink_name):
     if drink_name in MilkTea.milk_menu_dict: 
-      # print statement in here was removed (fix all others)
       if topping_name in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
+        print("You are choosing to remove", topping_name, "from", drink_name)
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
           minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
@@ -108,14 +108,17 @@ class FruitTea(BubbleTea):
           print("Your final order is:", drink_name,":", (FruitTea.fruit_menu_dict[drink_name]), "+",topping_name)
         elif extra_topping == "No":
           print(topping_name, "will not be added as an extra topping to", drink_name)
+      if topping_name not in (FruitTea.fruit_menu_dict[drink_name]) and topping_name in FruitTea.topping_list:
+        print("You have added", topping_name, "to", drink_name)
+        print("Your final order is:", drink_name,":", (FruitTea.fruit_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in FruitTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
 
 
   def remove_topping(self, topping_name, drink_name):
     if drink_name in FruitTea.fruit_menu_dict:
-      print("Your drink order contains the following toppings:", FruitTea.fruit_menu_dict[drink_name])
       if topping_name in (FruitTea.fruit_menu_dict[drink_name]) and topping_name in FruitTea.topping_list:
+        print("You are choosing to remove", topping_name, "from", drink_name)
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
           minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
@@ -150,14 +153,17 @@ class SparklingTea(BubbleTea):
           print("Your final order is:", drink_name,":", (SparklingTea.sparkling_menu_dict[drink_name]), "+",topping_name)
         elif extra_topping == "No":
           print(topping_name, "will not be added as an extra topping to", drink_name)
+      if topping_name not in (SparklingTea.sparkling_menu_dict[drink_name]) and topping_name in SparklingTea.topping_list:
+        print("You have added", topping_name, "to", drink_name)
+        print("Your final order is:", drink_name,":", (SparklingTea.sparkling_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in SparklingTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
 
 
   def remove_topping(self, topping_name, drink_name):
     if drink_name in SparklingTea.sparkling_menu_dict:
-      print("Your drink order contains the following toppings:", SparklingTea.sparkling_menu_dict[drink_name])
       if topping_name in (SparklingTea.sparkling_menu_dict[drink_name]) and topping_name in SparklingTea.topping_list:
+        print("You are choosing to remove", topping_name, "from", drink_name)
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
           minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
@@ -193,14 +199,17 @@ class HotTea(BubbleTea):
           print("Your final order is:", drink_name,":", (HotTea.hot_menu_dict[drink_name]), "+",topping_name)
         elif extra_topping == "No":
           print(topping_name, "will not be added as an extra topping to", drink_name)
+      if topping_name not in (HotTea.hot_menu_dict[drink_name]) and topping_name in HotTea.topping_list:
+        print("You have added", topping_name, "to", drink_name)
+        print("Your final order is:", drink_name,":", (HotTea.hot_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in HotTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
 
 
   def remove_topping(self, topping_name, drink_name):
     if drink_name in HotTea.hot_menu_dict:
-      print("Your drink order contains the following toppings:", HotTea.hot_menu_dict[drink_name])
       if topping_name in (HotTea.hot_menu_dict[drink_name]) and topping_name in HotTea.topping_list:
+        print("You are choosing to remove", topping_name, "from", drink_name)
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
           minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
@@ -237,14 +246,17 @@ class FrozenTea(BubbleTea):
           print("Your final order is:", drink_name,":", (FrozenTea.frozen_menu_dict[drink_name]), "+",topping_name)
         elif extra_topping == "No":
           print(topping_name, "will not be added as an extra topping to", drink_name)
+      if topping_name not in (FrozenTea.frozen_menu_dict[drink_name]) and topping_name in FrozenTea.topping_list:
+        print("You have added", topping_name, "to", drink_name)
+        print("Your final order is:", drink_name,":", (FrozenTea.frozen_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in FrozenTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
 
 
   def remove_topping(self, topping_name, drink_name):
     if drink_name in FrozenTea.frozen_menu_dict:
-      print("Your drink order contains the following toppings:", FrozenTea.frozen_menu_dict[drink_name])
       if topping_name in (FrozenTea.frozen_menu_dict[drink_name]) and topping_name in FrozenTea.topping_list:
+        print("You are choosing to remove", topping_name, "from", drink_name)
         minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         while minus_topping not in ("Yes", "No"):
           minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
@@ -273,6 +285,65 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
     store_earning = []
     order_history = []
 
+
+  def milk_add_remove(self):
+      topping_action = input("Would you like to add or remove any toppings from your drink selection? [Add/Remove/None]") # create different methods for each of these in same class
+      if topping_action == "Add":
+        bubble_tea = MilkTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.add_topping("Cookie Crumb", "Classic Milk Tea")
+      elif topping_action == "Remove":
+        bubble_tea = MilkTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.remove_topping("Pearls", "Classic Milk Tea")
+      elif topping_action == "None":
+        pass
+  
+  def fruit_add_remove(self):
+      topping_action = input("Would you like to add or remove any toppings from your drink selection? [Add/Remove/None]") # create different methods for each of these in same class
+      if topping_action == "Add":
+        bubble_tea = FruitTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.add_topping("Cookie Crumb", "Classic Milk Tea")
+      elif topping_action == "Remove":
+        bubble_tea = FruitTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.remove_topping("Pearls", "Classic Milk Tea")
+      elif topping_action == "None":
+        pass
+
+  def sparkling_add_remove(self):
+      topping_action = input("Would you like to add or remove any toppings from your drink selection? [Add/Remove/None]") # create different methods for each of these in same class
+      if topping_action == "Add":
+        bubble_tea = SparklingTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.add_topping("Cookie Crumb", "Classic Milk Tea")
+      elif topping_action == "Remove":
+        bubble_tea = SparklingTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.remove_topping("Pearls", "Classic Milk Tea")
+      elif topping_action == "None":
+        pass
+
+  def hot_add_remove(self):
+      topping_action = input("Would you like to add or remove any toppings from your drink selection? [Add/Remove/None]") # create different methods for each of these in same class
+      if topping_action == "Add":
+        bubble_tea = HotTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.add_topping("Cookie Crumb", "Classic Milk Tea")
+      elif topping_action == "Remove":
+        bubble_tea = HotTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.remove_topping("Pearls", "Classic Milk Tea")
+      elif topping_action == "None":
+        pass
+
+  def frozen_add_remove(self):
+      topping_action = input("Would you like to add or remove any toppings from your drink selection? [Add/Remove/None]") # create different methods for each of these in same class
+      if topping_action == "Add":
+        bubble_tea = FrozenTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.add_topping("Cookie Crumb", "Classic Milk Tea")
+      elif topping_action == "Remove":
+        bubble_tea = FrozenTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+        bubble_tea.remove_topping("Pearls", "Classic Milk Tea")
+      elif topping_action == "None":
+        pass
+
+
+
+
   def order_drink(self, drink_name):
     print("Welcome to The Bubble Tea Store")
     print("-------------------------------")
@@ -288,14 +359,24 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
           print("You have chosen", drink_name)
           if drink_name in FruitTea.fruit_menu_dict:
             print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.fruit_add_remove()
           elif drink_name in MilkTea.milk_menu_dict:
             print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.milk_add_remove()
           elif drink_name in SparklingTea.sparkling_menu_dict:
             print("This drink contains the following toppings:", (SparklingTea.sparkling_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.sparkling_add_remove()
           elif drink_name in HotTea.hot_menu_dict:
             print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.hot_add_remove()
           elif drink_name in FrozenTea.frozen_menu_dict:
             print("This drink contains the following toppings:", (FrozenTea.frozen_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.frozen_add_remove()
         else:
           print("This drink is not available on our menu for this selection")
         print(" ")
@@ -313,23 +394,22 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
           print("You have chosen", drink_name)
           if drink_name in FruitTea.fruit_menu_dict:
             print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.fruit_add_remove()
           elif drink_name in MilkTea.milk_menu_dict:
             print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.milk_add_remove()
           elif drink_name in HotTea.hot_menu_dict:
             print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.hot_add_remove()
           elif drink_name in FrozenTea.frozen_menu_dict:
             print("This drink contains the following toppings:", (FrozenTea.frozen_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.frozen_add_remove()
         else:
           print("This drink is not available on our menu for this selection")
-        topping_action = input("Would you like to add or remove any toppings from your drink selection? [Add/Remove/None]")
-      if topping_action == "Add":
-        bubble_tea = MilkTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
-        bubble_tea.add_topping("Cookie Crumb", "Classic Milk Tea")
-      elif topping_action == "Remove":
-        bubble_tea = MilkTea("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
-        bubble_tea.remove_topping("Pearls", "Classic Milk Tea")
-      elif topping_action == "None":
-        pass
 
 
       elif drink_type_select == "Sparkling":
@@ -340,8 +420,12 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
           print("You have chosen", drink_name)
           if drink_name in FruitTea.fruit_menu_dict:
             print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.fruit_add_remove()
           elif drink_name in SparklingTea.sparkling_menu_dict:
             print("This drink contains the following toppings:", (SparklingTea.sparkling_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.sparkling_add_remove()
         else:
           print("This drink is not available on our menu for this selection")
 
@@ -355,10 +439,16 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
           print("You have chosen", drink_name)
           if drink_name in FruitTea.fruit_menu_dict:
             print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.fruit_add_remove()
           elif drink_name in MilkTea.milk_menu_dict:
             print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.milk_add_remove()
           elif drink_name in HotTea.hot_menu_dict:
             print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.hot_add_remove()
         else:
           print("This drink is not available on our menu for this selection")
 
@@ -372,10 +462,16 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
           print("You have chosen", drink_name)
           if drink_name in FruitTea.fruit_menu_dict:
             print("This drink contains the following toppings:", (FruitTea.fruit_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.fruit_add_remove()
           elif drink_name in MilkTea.milk_menu_dict:
             print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.milk_add_remove()
           elif drink_name in FrozenTea.frozen_menu_dict:
             print("This drink contains the following toppings:", (FrozenTea.frozen_menu_dict[drink_name]))
+            add_remove = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
+            add_remove.frozen_add_remove()
         else:
           print("This drink is not available on our menu for this selection")
 
@@ -383,10 +479,11 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
 
   # choosing what type of drink to order - depending on choice show a list of drinks (done)
   # display the topping's on the drink (done)
-  # ask if customer wants to remove or add a topping 
-  # if either then show either method then show final drink order 
+  # ask if customer wants to remove or add a topping (done)
+  # if either then show either method then show final drink order (done)
+
+ # ask addtional things from attributes 
   # ask if another drink needs to be ordered (if yes then it loops, if not then it continues)
-  # ask addtional things from attributes 
   # if not then continue to display final drink order 
   # show total and display thank you message 
 
@@ -398,4 +495,3 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
 store = Store("Classic Milk Tea", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
 store.order_drink("Classic Milk Tea")
 
-# 9 days worth of commits done (one more remaining to meet mark)
