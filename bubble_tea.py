@@ -52,6 +52,12 @@ class MilkTea(BubbleTea):
   milk_tea_name = ["Green Tea Strawberry Matcha Latte", "Classic Milk Tea", "Cookie Cumble", "Choco Blast"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   topping_price_dict = {"Custard" : 1.00, "Mousse" : 2.40, "Pearls" : 1.20, "Cookie Crumb" : 0.75, "Mixed Jellies" : 0.35, "Herbal Jelly" : 0.45, "Coconut Jelly" : 0.50, "Aloe Vera" : 0.70, "Mango Popping Pearls" : 0.40, "Strawberry Popping Pearls" : 0.40, "Apple Popping Pearls" : 0.40}
+
+  fruit_topping = ["Mango", "Lychee", "Apple", "Grape", "Melon", "Grapefruit", "Lemon", "Guava", "PassionFruit", "Strawberry", "Pomegranate", "Peach", "Tropical", "Watermelon"]
+  flavour_topping = ["Mint Choc", "Thai", "Salted Caramel", "Roasted", "Earl Grey", "Vanilla", "Assam", "Hazelnut", "Oolong", "Jasmine", "Matcha", "Premium", "Taro", "Chocolate"]
+  fruit_topping_dict = {"Mango" : 0.30, "Lychee" : 0.10, "Apple" : 0.20, "Grape" : 0.40, "Melon" : 0.50, "Grapefruit" : 0.10, "Lemon" : 0.30, "Guava" : 0.20, "PassionFruit" : 0.25, "Strawberry" : 0.20, "Pomegranate" : 0.45, "Peach" : 0.10, "Tropical" : 0.65, "Watermelon" : 0.35}
+  flavour_topping_dict = {"Mint Choc" : 0.30, "Thai" : 0.35, "Salted Caramel" : 0.20, "Roasted" : 0.40, "Earl Grey" : 0.50, "Vanilla" : 0.10, "Assam" : 0.30, "Hazelnut" : 0.20, "Oolong" : 0.25, "Jasmine" : 0.20, "Matcha" : 0.45, "Premium" : 0.10, "Taro" : 0.65, "Chocolate" : 0.40}
+
   order_cost = 4.50
 
   def add_topping(self, topping_name, drink_name): 
@@ -68,9 +74,30 @@ class MilkTea(BubbleTea):
       if topping_name not in (MilkTea.milk_menu_dict[drink_name]) and topping_name in MilkTea.topping_list:
         MilkTea.order_cost = MilkTea.order_cost + (MilkTea.topping_price_dict[topping_name])
         print("You have added", topping_name, "to", drink_name)
-        print("Your final order is:", drink_name,":", (MilkTea.milk_menu_dict[drink_name]), "+",topping_name)
-    elif topping_name not in MilkTea.topping_list:
-      print(topping_name , "is not available as a topping for", drink_name)
+      elif topping_name not in MilkTea.topping_list:
+        print(topping_name , "is not available as a topping for", drink_name)
+
+    additional_choice = input("Would you like to add any additonal toppings or flavours to your drink? [Yes/No]")
+    if additional_choice == "Yes":
+      option = input("Fruit or Flavour? [Fruit/Flavour]")
+      if option == "Fruit":
+        print("Fruit choices:", MilkTea.fruit_topping)
+        print(" ")
+        choose_fruit =  input("What fruit do you want to add to your drink?")
+        if choose_fruit in (MilkTea.fruit_topping):
+          print("You have added", choose_fruit, "to", drink_name)
+          MilkTea.order_cost = MilkTea.order_cost + (MilkTea.fruit_topping_dict[choose_fruit])
+      elif option == "Flavour":
+        print("Flavour choices:", MilkTea.flavour_topping)
+        print(" ")
+        choose_flavour =  input("What flavour do you want to add to your drink?")
+        if choose_flavour in (MilkTea.flavour_topping):
+          print("You have added", choose_flavour, "to", drink_name)
+          MilkTea.order_cost = MilkTea.order_cost + (MilkTea.flavour_topping_dict[choose_flavour])
+      print("Your total is:", MilkTea.order_cost)
+    elif additional_choice == "No":
+      print("Your total is:", MilkTea.order_cost)
+
 
 
   def remove_topping(self, topping_name, drink_name):
@@ -101,6 +128,12 @@ class FruitTea(BubbleTea):
   fruit_tea_name = ["Mango and Passion Tea", "Strawberry Ice Blend", "Lemon and Blueberry Frenzy"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   topping_price_dict = {"Custard" : 1.00, "Mousse" : 2.40, "Pearls" : 1.20, "Cookie Crumb" : 0.75, "Mixed Jellies" : 0.35, "Herbal Jelly" : 0.45, "Coconut Jelly" : 0.50, "Aloe Vera" : 0.70, "Mango Popping Pearls" : 0.40, "Strawberry Popping Pearls" : 0.40, "Apple Popping Pearls" : 0.40}
+  
+  fruit_topping = ["Mango", "Lychee", "Apple", "Grape", "Melon", "Grapefruit", "Lemon", "Guava", "PassionFruit", "Strawberry", "Pomegranate", "Peach", "Tropical", "Watermelon"]
+  flavour_topping = ["Mint Choc", "Thai", "Salted Caramel", "Roasted", "Earl Grey", "Vanilla", "Assam", "Hazelnut", "Oolong", "Jasmine", "Matcha", "Premium", "Taro", "Chocolate"]
+  fruit_topping_dict = {"Mango" : 0.30, "Lychee" : 0.10, "Apple" : 0.20, "Grape" : 0.40, "Melon" : 0.50, "Grapefruit" : 0.10, "Lemon" : 0.30, "Guava" : 0.20, "PassionFruit" : 0.25, "Strawberry" : 0.20, "Pomegranate" : 0.45, "Peach" : 0.10, "Tropical" : 0.65, "Watermelon" : 0.35}
+  flavour_topping_dict = {"Mint Choc" : 0.30, "Thai" : 0.35, "Salted Caramel" : 0.20, "Roasted" : 0.40, "Earl Grey" : 0.50, "Vanilla" : 0.10, "Assam" : 0.30, "Hazelnut" : 0.20, "Oolong" : 0.25, "Jasmine" : 0.20, "Matcha" : 0.45, "Premium" : 0.10, "Taro" : 0.65, "Chocolate" : 0.40}
+
   order_cost = 4.50
 
   def add_topping(self, topping_name, drink_name): 
@@ -118,9 +151,29 @@ class FruitTea(BubbleTea):
       if topping_name not in (FruitTea.fruit_menu_dict[drink_name]) and topping_name in FruitTea.topping_list:
         FruitTea.order_cost = FruitTea.order_cost + (FruitTea.topping_price_dict[topping_name])
         print("You have added", topping_name, "to", drink_name)
-        print("Your final order is:", drink_name,":", (FruitTea.fruit_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in FruitTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
+
+    additional_choice = input("Would you like to add any additonal toppings or flavours to your drink? [Yes/No]")
+    if additional_choice == "Yes":
+      option = input("Fruit or Flavour? [Fruit/Flavour]")
+      if option == "Fruit":
+        print("Fruit choices:", FruitTea.fruit_topping)
+        print(" ")
+        choose_fruit =  input("What fruit do you want to add to your drink?")
+        if choose_fruit in (FruitTea.fruit_topping):
+          print("You have added", choose_fruit, "to", drink_name)
+          FruitTea.order_cost = FruitTea.order_cost + (FruitTea.fruit_topping_dict[choose_fruit])
+      elif option == "Flavour":
+        print("Flavour choices:", FruitTea.flavour_topping)
+        print(" ")
+        choose_flavour =  input("What flavour do you want to add to your drink?")
+        if choose_flavour in (FruitTea.flavour_topping):
+          print("You have added", choose_flavour, "to", drink_name)
+          FruitTea.order_cost = FruitTea.order_cost + (FruitTea.flavour_topping_dict[choose_flavour])
+      print("Your total is:", FruitTea.order_cost)
+    elif additional_choice == "No":
+      print("Your total is:", FruitTea.order_cost)
 
 
   def remove_topping(self, topping_name, drink_name):
@@ -150,6 +203,12 @@ class SparklingTea(BubbleTea):
   sprakling_tea_name = ["Ginger Rose Tea", "Watermelon Tea"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   topping_price_dict = {"Custard" : 1.00, "Mousse" : 2.40, "Pearls" : 1.20, "Cookie Crumb" : 0.75, "Mixed Jellies" : 0.35, "Herbal Jelly" : 0.45, "Coconut Jelly" : 0.50, "Aloe Vera" : 0.70, "Mango Popping Pearls" : 0.40, "Strawberry Popping Pearls" : 0.40, "Apple Popping Pearls" : 0.40}
+  
+  fruit_topping = ["Mango", "Lychee", "Apple", "Grape", "Melon", "Grapefruit", "Lemon", "Guava", "PassionFruit", "Strawberry", "Pomegranate", "Peach", "Tropical", "Watermelon"]
+  flavour_topping = ["Mint Choc", "Thai", "Salted Caramel", "Roasted", "Earl Grey", "Vanilla", "Assam", "Hazelnut", "Oolong", "Jasmine", "Matcha", "Premium", "Taro", "Chocolate"]
+  fruit_topping_dict = {"Mango" : 0.30, "Lychee" : 0.10, "Apple" : 0.20, "Grape" : 0.40, "Melon" : 0.50, "Grapefruit" : 0.10, "Lemon" : 0.30, "Guava" : 0.20, "PassionFruit" : 0.25, "Strawberry" : 0.20, "Pomegranate" : 0.45, "Peach" : 0.10, "Tropical" : 0.65, "Watermelon" : 0.35}
+  flavour_topping_dict = {"Mint Choc" : 0.30, "Thai" : 0.35, "Salted Caramel" : 0.20, "Roasted" : 0.40, "Earl Grey" : 0.50, "Vanilla" : 0.10, "Assam" : 0.30, "Hazelnut" : 0.20, "Oolong" : 0.25, "Jasmine" : 0.20, "Matcha" : 0.45, "Premium" : 0.10, "Taro" : 0.65, "Chocolate" : 0.40}
+
   order_cost = 4.50
 
   def add_topping(self, topping_name, drink_name): 
@@ -167,9 +226,29 @@ class SparklingTea(BubbleTea):
       if topping_name not in (SparklingTea.sparkling_menu_dict[drink_name]) and topping_name in SparklingTea.topping_list:
         SparklingTea.order_cost = SparklingTea.order_cost + (SparklingTea.topping_price_dict[topping_name])
         print("You have added", topping_name, "to", drink_name)
-        print("Your final order is:", drink_name,":", (SparklingTea.sparkling_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in SparklingTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
+
+    additional_choice = input("Would you like to add any additonal toppings or flavours to your drink? [Yes/No]")
+    if additional_choice == "Yes":
+      option = input("Fruit or Flavour? [Fruit/Flavour]")
+      if option == "Fruit":
+        print("Fruit choices:", SparklingTea.fruit_topping)
+        print(" ")
+        choose_fruit =  input("What fruit do you want to add to your drink?")
+        if choose_fruit in (SparklingTea.fruit_topping):
+          print("You have added", choose_fruit, "to", drink_name)
+          SparklingTea.order_cost = SparklingTea.order_cost + (SparklingTea.fruit_topping_dict[choose_fruit])
+      elif option == "Flavour":
+        print("Flavour choices:", SparklingTea.flavour_topping)
+        print(" ")
+        choose_flavour =  input("What flavour do you want to add to your drink?")
+        if choose_flavour in (SparklingTea.flavour_topping):
+          print("You have added", choose_flavour, "to", drink_name)
+          SparklingTea.order_cost = SparklingTea.order_cost + (SparklingTea.flavour_topping_dict[choose_flavour])
+      print("Your total is:", SparklingTea.order_cost)
+    elif additional_choice == "No":
+      print("Your total is:", SparklingTea.order_cost)
 
 
   def remove_topping(self, topping_name, drink_name):
@@ -181,7 +260,6 @@ class SparklingTea(BubbleTea):
           minus_topping = input("Would you like to remove this topping from the drink? [Yes/No]")
         if minus_topping == "Yes":
           print("You have removed", topping_name, "from", drink_name)
-          print("Your final order is:", drink_name, ":", SparklingTea.sparkling_menu_dict[drink_name], "-",topping_name)
         elif minus_topping == "No":
           print(topping_name, "will not be removed from", drink_name)
       elif topping_name not in SparklingTea.topping_list[drink_name]:
@@ -200,6 +278,12 @@ class HotTea(BubbleTea):
   hot_tea_name = ["Ruby Grapefruit and Honey", "Earl Grey Black Tea"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   topping_price_dict = {"Custard" : 1.00, "Mousse" : 2.40, "Pearls" : 1.20, "Cookie Crumb" : 0.75, "Mixed Jellies" : 0.35, "Herbal Jelly" : 0.45, "Coconut Jelly" : 0.50, "Aloe Vera" : 0.70, "Mango Popping Pearls" : 0.40, "Strawberry Popping Pearls" : 0.40, "Apple Popping Pearls" : 0.40}
+
+  fruit_topping = ["Mango", "Lychee", "Apple", "Grape", "Melon", "Grapefruit", "Lemon", "Guava", "PassionFruit", "Strawberry", "Pomegranate", "Peach", "Tropical", "Watermelon"]
+  flavour_topping = ["Mint Choc", "Thai", "Salted Caramel", "Roasted", "Earl Grey", "Vanilla", "Assam", "Hazelnut", "Oolong", "Jasmine", "Matcha", "Premium", "Taro", "Chocolate"]
+  fruit_topping_dict = {"Mango" : 0.30, "Lychee" : 0.10, "Apple" : 0.20, "Grape" : 0.40, "Melon" : 0.50, "Grapefruit" : 0.10, "Lemon" : 0.30, "Guava" : 0.20, "PassionFruit" : 0.25, "Strawberry" : 0.20, "Pomegranate" : 0.45, "Peach" : 0.10, "Tropical" : 0.65, "Watermelon" : 0.35}
+  flavour_topping_dict = {"Mint Choc" : 0.30, "Thai" : 0.35, "Salted Caramel" : 0.20, "Roasted" : 0.40, "Earl Grey" : 0.50, "Vanilla" : 0.10, "Assam" : 0.30, "Hazelnut" : 0.20, "Oolong" : 0.25, "Jasmine" : 0.20, "Matcha" : 0.45, "Premium" : 0.10, "Taro" : 0.65, "Chocolate" : 0.40}
+
   order_cost = 4.50
 
   def add_topping(self, topping_name, drink_name): 
@@ -217,10 +301,29 @@ class HotTea(BubbleTea):
       if topping_name not in (HotTea.hot_menu_dict[drink_name]) and topping_name in HotTea.topping_list:
         HotTea.order_cost = HotTea.order_cost + (HotTea.topping_price_dict[topping_name])
         print("You have added", topping_name, "to", drink_name)
-        print("Your final order is:", drink_name,":", (HotTea.hot_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in HotTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
 
+    additional_choice = input("Would you like to add any additonal toppings or flavours to your drink? [Yes/No]")
+    if additional_choice == "Yes":
+      option = input("Fruit or Flavour? [Fruit/Flavour]")
+      if option == "Fruit":
+        print("Fruit choices:", HotTea.fruit_topping)
+        print(" ")
+        choose_fruit =  input("What fruit do you want to add to your drink?")
+        if choose_fruit in (HotTea.fruit_topping):
+          print("You have added", choose_fruit, "to", drink_name)
+          HotTea.order_cost = HotTea.order_cost + (HotTea.fruit_topping_dict[choose_fruit])
+      elif option == "Flavour":
+        print("Flavour choices:", HotTea.flavour_topping)
+        print(" ")
+        choose_flavour =  input("What flavour do you want to add to your drink?")
+        if choose_flavour in (HotTea.flavour_topping):
+          print("You have added", choose_flavour, "to", drink_name)
+          HotTea.order_cost = HotTea.order_cost + (HotTea.flavour_topping_dict[choose_flavour])
+      print("Your total is:", HotTea.order_cost)
+    elif additional_choice == "No":
+      print("Your total is:", HotTea.order_cost)
 
   def remove_topping(self, topping_name, drink_name):
     if drink_name in HotTea.hot_menu_dict:
@@ -249,6 +352,12 @@ class FrozenTea(BubbleTea):
   frozen_tea_name = ["Lychee Frozen", "Mango Frozen"]
   topping_list = ["Custard", "Mousse", "Pearls", "Cookie Crumb", "Mixed Jellies", "Herbal Jelly", "Coconut Jelly, Aloe Vera", "Mango Popping Pearls", "Strawberry Popping Pearls", "Apple Popping Pearls"] 
   topping_price_dict = {"Custard" : 1.00, "Mousse" : 2.40, "Pearls" : 1.20, "Cookie Crumb" : 0.75, "Mixed Jellies" : 0.35, "Herbal Jelly" : 0.45, "Coconut Jelly" : 0.50, "Aloe Vera" : 0.70, "Mango Popping Pearls" : 0.40, "Strawberry Popping Pearls" : 0.40, "Apple Popping Pearls" : 0.40}
+  
+  fruit_topping = ["Mango", "Lychee", "Apple", "Grape", "Melon", "Grapefruit", "Lemon", "Guava", "PassionFruit", "Strawberry", "Pomegranate", "Peach", "Tropical", "Watermelon"]
+  flavour_topping = ["Mint Choc", "Thai", "Salted Caramel", "Roasted", "Earl Grey", "Vanilla", "Assam", "Hazelnut", "Oolong", "Jasmine", "Matcha", "Premium", "Taro", "Chocolate"]
+  fruit_topping_dict = {"Mango" : 0.30, "Lychee" : 0.10, "Apple" : 0.20, "Grape" : 0.40, "Melon" : 0.50, "Grapefruit" : 0.10, "Lemon" : 0.30, "Guava" : 0.20, "PassionFruit" : 0.25, "Strawberry" : 0.20, "Pomegranate" : 0.45, "Peach" : 0.10, "Tropical" : 0.65, "Watermelon" : 0.35}
+  flavour_topping_dict = {"Mint Choc" : 0.30, "Thai" : 0.35, "Salted Caramel" : 0.20, "Roasted" : 0.40, "Earl Grey" : 0.50, "Vanilla" : 0.10, "Assam" : 0.30, "Hazelnut" : 0.20, "Oolong" : 0.25, "Jasmine" : 0.20, "Matcha" : 0.45, "Premium" : 0.10, "Taro" : 0.65, "Chocolate" : 0.40}
+
   order_cost = 4.50
 
   def add_topping(self, topping_name, drink_name): 
@@ -266,9 +375,29 @@ class FrozenTea(BubbleTea):
       if topping_name not in (FrozenTea.frozen_menu_dict[drink_name]) and topping_name in FrozenTea.topping_list:
         FrozenTea.order_cost = FrozenTea.order_cost + (FrozenTea.topping_price_dict[topping_name])
         print("You have added", topping_name, "to", drink_name)
-        print("Your final order is:", drink_name,":", (FrozenTea.frozen_menu_dict[drink_name]), "+",topping_name)
       elif topping_name not in FrozenTea.topping_list:
         print(topping_name , "is not available as a topping for", drink_name)
+
+    additional_choice = input("Would you like to add any additonal toppings or flavours to your drink? [Yes/No]")
+    if additional_choice == "Yes":
+      option = input("Fruit or Flavour? [Fruit/Flavour]")
+      if option == "Fruit":
+        print("Fruit choices:", FrozenTea.fruit_topping)
+        print(" ")
+        choose_fruit =  input("What fruit do you want to add to your drink?")
+        if choose_fruit in (FrozenTea.fruit_topping):
+          print("You have added", choose_fruit, "to", drink_name)
+          FrozenTea.order_cost = FrozenTea.order_cost + (FrozenTea.fruit_topping_dict[choose_fruit])
+      elif option == "Flavour":
+        print("Flavour choices:", FrozenTea.flavour_topping)
+        print(" ")
+        choose_flavour =  input("What flavour do you want to add to your drink?")
+        if choose_flavour in (FrozenTea.flavour_topping):
+          print("You have added", choose_flavour, "to", drink_name)
+          FrozenTea.order_cost = FrozenTea.order_cost + (FrozenTea.flavour_topping_dict[choose_flavour])
+      print("Your total is:", FrozenTea.order_cost)
+    elif additional_choice == "No":
+      print("Your total is:", FrozenTea.order_cost)
 
 
   def remove_topping(self, topping_name, drink_name):
@@ -329,7 +458,7 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
         print("This drink contains", tea_type)
       elif tea_type not in (MilkTea.milk_menu_dict[drink_name]):
         print("This drink does not contain", tea_type)
-      print("Your total is: $",MilkTea.order_cost)
+
 
 
 
@@ -361,7 +490,6 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
         print("This drink contains", tea_type)
       elif tea_type not in (FruitTea.fruit_menu_dict[drink_name]):
         print("This drink does not contain", tea_type)
-      print("Your total is: $",FruitTea.order_cost)
 
 
 
@@ -392,7 +520,6 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
         print("This drink contains", tea_type)
       elif tea_type not in (SparklingTea.sparkling_menu_dict[drink_name]):
         print("This drink does not contain", tea_type)
-      print("Your total is: $",SparklingTea.order_cost)
 
 
 
@@ -424,7 +551,6 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
         print("This drink contains", tea_type)
       elif tea_type not in (HotTea.hot_menu_dict[drink_name]):
         print("This drink does not contain", tea_type)
-      print("Your total is: $",HotTea.order_cost)
 
 
 
@@ -455,8 +581,6 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
         print("This drink contains", tea_type)
       elif tea_type not in (FrozenTea.frozen_menu_dict[drink_name]):
         print("This drink does not contain", tea_type)
-      print("Your total is: $",FrozenTea.order_cost)
-
 
 
 
@@ -514,7 +638,7 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
             add_remove.fruit_order()
           elif drink_name in MilkTea.milk_menu_dict:
             print("This drink contains the following toppings:", (MilkTea.milk_menu_dict[drink_name]))
-            add_remove = Store("Classic Milk Tea", "Large", "Low", "Medium", "green tea", "Cookie Crumb", 10)
+            add_remove = Store("Classic Milk Tea", "Large", "Low", "Medium", "Green Tea", "Cookie Crumb", 10)
             add_remove.milk_order("Classic Milk Tea", "Large", "Low", "Medium", "Black Tea")
           elif drink_name in HotTea.hot_menu_dict:
             print("This drink contains the following toppings:", (HotTea.hot_menu_dict[drink_name]))
@@ -595,9 +719,7 @@ class Store(MilkTea, FruitTea, SparklingTea, HotTea, FrozenTea, BubbleTea):
 
  # ask addtional things from attributes 
  # pricing 
-  # ask if another drink needs to be ordered (if yes then it loops, if not then it continues)
-  # if not then continue to display final drink order 
-  # show total and display thank you message 
+  # show final order and order total and display thank you message 
 
 
 #bubble_tea = MilkTea("Green Tea Strawberry Matcha Latte", "medium", "low", "medium", "green tea", "Cookie Crumb", 10)
